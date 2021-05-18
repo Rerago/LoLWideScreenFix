@@ -2,6 +2,10 @@
 
 Mod for League of Legends to improve (ultra)wide screen support.
 
+League of Legends itself supports UltraWide resolutions very well. However, some UI elements are anchored to the left and right edges. This leads to the MiniMap slipping out of the direct field of view in some resolutions (32:9 in extreme cases). And a normal streaming in e.g. 1920x1080 is not possible, because all important UI elements would not be visible for the viewer.
+
+This mod centers the UI (as good as possible) in the middle and solves most of the problems.
+
 # How it works
 
 How the whole thing works can be read in a [blog entry](https://www.doppnet.com/hacking-league-of-legends-hud.html) by [@tnajdek](https://github.com/tnajdek/). I did not do more than rewrite the whole thing in C# and get it running on the current patch. So thanks again to [@tnajdek](https://github.com/tnajdek/) for his work.
