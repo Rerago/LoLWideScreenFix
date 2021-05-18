@@ -15,6 +15,7 @@ namespace LoLWideScreenFix
 
             UNKNOWN_OUTPUT_MODE = -1,
             CREATE_MOD_FAILED = -2,
+            ERROR_PARSING_ARGUMENTS = -3,
 
             UNKNOWN_ERROR = -666
         }
@@ -79,7 +80,7 @@ namespace LoLWideScreenFix
                 // Parse parameters and start the task accordingly
                 returncode = Parser.Default.ParseArguments<ArgumentsOptions>(args).MapResult(
                     (ArgumentsOptions opts) => MainTask(opts),
-                    errs => (int)ReturnCodes.UNKNOWN_ERROR);
+                    errs => (int)ReturnCodes.ERROR_PARSING_ARGUMENTS);
 
                 // If the task was not successful make output if necessary
                 if (returncode != (int)ReturnCodes.RUN_SUCCES)
