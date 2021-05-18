@@ -46,3 +46,10 @@ Everything works very well so far. However, not everything is 100% supported, su
 I love LoL your game (despite the fact that I'm pretty bad at it). I have recently joined the [r/ultrawidemasterrace/](https://www.reddit.com/r/ultrawidemasterrace/). We are roughly 12% of all players according to the [Steam Hardware Software Survey](https://store.steampowered.com/hwsurvey/Steam-Hardware-Software-Survey-Welcome-to-Steam). So a lot to consider.
 
 League of Legends supports resolutions very well for which I wanted to say thanks. However, some UI elements are aligned left and right on the edge. It would be wonderful if a support for a centrallized UI could be built directly into League of Legends.
+
+# FAQ
+**Where can I download LoLWideScreenFix?**  
+Click the [Releases](https://github.com/Rerago/LoLWideScreenFix/releases) tab at the top to download the latest version.
+
+**Is this approved by Riot?**  
+No it isn't. I think the whole thing is on the same level as custom skins. Therefore the risk of using them is on the same level.
