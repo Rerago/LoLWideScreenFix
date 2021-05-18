@@ -40,7 +40,7 @@ namespace LoLWideScreenFix
             [Option('o', "outputpath", Required = true, HelpText = "Path where the result should be generated")]
             public string OutputPath { get; set; }
 
-            [Option('m', "outputmode", HelpText = "target resolution width")]
+            [Option('m', "outputmode", HelpText = "Mode in which the output should be done")]
             public OutputMode? OutputMode { get; set; }
 
             [Option('t', "targetres", Required = true, HelpText = "target resolution width")]
