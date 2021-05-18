@@ -41,6 +41,14 @@ How e.g. LoLCustomSkin (LCS Manager) works I do not explain now further. This ca
 
 Everything works very well so far. However, not everything is 100% supported, such as the minimap on the left side.
 
+# Before/After Examples
+
+#### Before
+![Before](https://github.com/Rerago/LoLWideScreenFix/blob/main/Images/UltraWideDefault.png?raw=true)
+
+#### After
+![After](https://github.com/Rerago/LoLWideScreenFix/blob/main/Images/UltraWideFix.png?raw=true)
+
 # Dear Riot
 
 I love LoL your game (despite the fact that I'm pretty bad at it). I have recently joined the [r/ultrawidemasterrace/](https://www.reddit.com/r/ultrawidemasterrace/). We are roughly 12% of all players according to the [Steam Hardware Software Survey](https://store.steampowered.com/hwsurvey/Steam-Hardware-Software-Survey-Welcome-to-Steam). So a lot to consider.
