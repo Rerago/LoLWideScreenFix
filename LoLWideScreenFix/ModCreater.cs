@@ -22,7 +22,7 @@ namespace LoLWideScreenFix
         /// </summary>
         public static readonly ModInfo Info = new ModInfo()
         {
-            Author = "ReRago",
+            Author = "Rerago",
             Description = "Centers the UI in the middle for better (ultra)wide screen support.",
             Name = "WideScreenFix",
             Version = new Version(1, 0).ToString()
