@@ -18,7 +18,7 @@
   <ItemGroup>
     <PackageReference Include="CommandLineParser" Version="2.8.0" />
     <PackageReference Include="LeagueToolkit" Version="2.4.2" />
-    <PackageReference Include="System.Text.Json" Version="5.0.2" />
-    <PackageReference Include="ZstdSharp" Version="0.7.1" />
+    <PackageReference Include="System.Text.Json" Version="6.0.1" />
+    <PackageReference Include="ZstdSharp" Version="0.7.2" />
   </ItemGroup>
 </Project>
