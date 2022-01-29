@@ -69,7 +69,7 @@ namespace LoLWideScreenFix
         private const string WadSearchPattern = "*.wad.client";
 
         /// <summary>
-        /// <seealso cref="char"/> which is used in the wad in the folder to separate.
+        /// <see cref="char"/> which is used in the wad in the folder to separate.
         /// </summary>
         private const char WadDirectorySeparatorChar = '/';
         #endregion
