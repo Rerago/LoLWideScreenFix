@@ -67,8 +67,8 @@ namespace LoLWideScreenFix
                 //};
 
                 args = new string[] {
-                    @"-l D:\Riot Games\League of Legends\",
-                    Environment.ExpandEnvironmentVariables(@"-o %UserProfile%\Desktop\LoLModding\lolcustomskin-tools-64\installed\"),
+                    @"-l E:\Riot Games\League of Legends\",
+                    Environment.ExpandEnvironmentVariables(@"-o %UserProfile%\Desktop\LoLModding\cslol-manager\installed\"),
                     "-t 1920",
                     $"-m {OutputMode.LOLCUSTOMSKIN_MOD}"
                 };
