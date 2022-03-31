@@ -5,6 +5,7 @@ using LoLWideScreenFix.Extensions;
 using LeagueToolkit.IO.PropertyBin;
 using LeagueToolkit.IO.PropertyBin.Properties;
 using LeagueToolkit.Helpers.Hashing;
+using System.Collections.Generic;
 
 namespace LoLWideScreenFix
 {
@@ -28,6 +29,11 @@ namespace LoLWideScreenFix
         /// Hash for "mRect" for later comparisons
         /// </summary>
         private static readonly uint mRectNameHash = Fnv1a.HashLower("mRect");
+
+        /// <summary>
+        /// Hash for "AnchorSingle" for later comparisons
+        /// </summary>
+        private static readonly uint AnchorSingle = Fnv1a.HashLower("AnchorSingle");
 
         /// <summary>
         /// Hash for "mRectSourceResolutionWidth" for later comparisons
@@ -80,6 +86,18 @@ namespace LoLWideScreenFix
                 var mAnchors = obj?.GetPropertyByTyp<BinTreeStructure>(mAnchorsNameHash);
                 var mRect = obj?.GetPropertyByTyp<BinTreeVector4>(mRectNameHash);
                 var mRectSourceResolutionWidth = obj?.GetPropertyByTyp<BinTreeUInt16>(mRectSourceResolutionWidthNameHash);
+
+                // Was no anchor found? => Create default anchor
+                if (mAnchors == null)
+                {
+                    // Create base anchor for top left
+                    var newAnchors = new BinTreeStructure(obj, mAnchorsNameHash, AnchorSingle, new List<BinTreeProperty>());
+                    newAnchors.AddProperty(new BinTreeVector2(newAnchors, AnchorNameHash, new Vector2(0, 0)));
+                    obj.AddProperty(newAnchors);
+
+                    // Read anchor again
+                    mAnchors = obj?.GetPropertyByTyp<BinTreeStructure>(mAnchorsNameHash);
+                }
 
                 // Are not all properties present? => Skip object
                 if (mRectSourceResolutionWidth == null || mRect == null || mAnchors == null)

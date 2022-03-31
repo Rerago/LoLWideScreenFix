@@ -143,7 +143,7 @@ namespace LoLWideScreenFix
             @"gameplay/voicechat.uibase.bin",
             @"loadingscreen/loadingscreenclassic.uibase.bin",
             @"loadingscreen/loadingscreentutorial.uibase.bin",
-            @"loadingscreen/playercardsclassic.uibase.bin"
+            //@"loadingscreen/playercardsclassic.uibase.bin"
         };
 
         /// <summary>
