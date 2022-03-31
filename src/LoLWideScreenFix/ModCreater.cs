@@ -215,10 +215,11 @@ namespace LoLWideScreenFix
                     using var entryDecompressedStream = wadEnt.GetDataHandle().GetDecompressedStream();
 
                     // Modify stream
-                    var binTree = LoLWideScreenFix.GetModdedBinTree(entryDecompressedStream, targetResolutionWidth);
+                    var binTree = LoLWideScreenFix.GetModdedBinTree(entryDecompressedStream, targetResolutionWidth, out int changes);
 
                     // Write file
-                    binTree.Write(localBinPath, FileVersionProvider.GetSupportedVersions(LeagueFileType.PropertyBin)?.Last());
+                    if (changes > 0)
+                        binTree.Write(localBinPath, FileVersionProvider.GetSupportedVersions(LeagueFileType.PropertyBin)?.Last());
                 }
             }
         }
@@ -279,6 +280,9 @@ namespace LoLWideScreenFix
                 // Create path to WAD
                 var modWadFilePath = Path.Combine(modWadFolder, wadFilePath[leagueWadPath.Length..].TrimStart(Path.DirectorySeparatorChar));
 
+                // Define total change counter
+                var totalChanges = 0;
+
                 // WAD-Builder 
                 using var wadBuilder = new WadBuilder();
 
@@ -293,7 +297,14 @@ namespace LoLWideScreenFix
                     using var entryDecompressedStream = wadEnt.GetDataHandle().GetDecompressedStream();
 
                     // Modify stream
-                    var binTree = LoLWideScreenFix.GetModdedBinTree(entryDecompressedStream, targetResolutionWidth);
+                    var binTree = LoLWideScreenFix.GetModdedBinTree(entryDecompressedStream, targetResolutionWidth, out int changes);
+
+                    // No change? => Skip entry
+                    if (changes == 0)
+                        continue;
+
+                    // Increase total change counter
+                    totalChanges += changes;
 
                     // Create stream for modified file (stream will be closed by WadBuilder during Dispose)
                     var moddedBinTree = new MemoryStream();
@@ -313,7 +324,8 @@ namespace LoLWideScreenFix
                 }
 
                 // Create wad file
-                wadBuilder.Build(modWadFilePath);
+                if (totalChanges > 0)
+                    wadBuilder.Build(modWadFilePath);
             }
         }
         #endregion

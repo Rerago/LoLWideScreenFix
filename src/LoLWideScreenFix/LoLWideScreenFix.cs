@@ -47,23 +47,28 @@ namespace LoLWideScreenFix
         /// <summary>
         /// Creates a modified <see cref="BinTree"/> where the UI elements are center-aligned.
         /// </summary>
-        /// <param name="entryStream">Wad entry stream</param>
+        /// <param name="fileLocation">Path to the WAD file.</param>
         /// <param name="targetResolutionWidth">Width of the resolution to be achieved.</param>
+        /// <param name="changes">Number of changes made.</param>
         /// <returns>A <see cref="BinTree"/> adjusted to the line width of the resolution.</returns>
-        public static BinTree GetModdedBinTree(string fileLocation, uint targetResolutionWidth)
-            => GetModdedBinTree(File.OpenRead(fileLocation), targetResolutionWidth);
+        public static BinTree GetModdedBinTree(string fileLocation, uint targetResolutionWidth, out int changes)
+            => GetModdedBinTree(File.OpenRead(fileLocation), targetResolutionWidth, out changes);
 
         /// <summary>
         /// Creates a modified <see cref="BinTree"/> where the UI elements are center-aligned.
         /// </summary>
         /// <param name="entryStream">Wad entry stream</param>
         /// <param name="targetResolutionWidth">Width of the resolution to be achieved.</param>
+        /// <param name="changes">Number of changes made.</param>
         /// <returns>A <see cref="BinTree"/> adjusted to the line width of the resolution.</returns>
-        public static BinTree GetModdedBinTree(Stream entryStream, uint targetResolutionWidth)
+        public static BinTree GetModdedBinTree(Stream entryStream, uint targetResolutionWidth, out int changes)
         {
             // Check whether a too small resolution was specified.
             if (targetResolutionWidth <= MAGIC_VALUE)
                 throw new NotSupportedException($"A resolution width less than or equal to {(uint)MAGIC_VALUE} is not supported");
+
+            // Define change counter
+            changes = 0;
 
             // Read bin file
             var tree = new BinTree(entryStream);
@@ -97,6 +102,9 @@ namespace LoLWideScreenFix
                 // Assign centered rectangle and center anchor on X axis
                 mRect.Value = reanchored;
                 oldAnchor.Value = new Vector2((float)0.5, oldAnchor.Value.Y);
+
+                // Increase change counter
+                changes++;
             }
 
             // Return
