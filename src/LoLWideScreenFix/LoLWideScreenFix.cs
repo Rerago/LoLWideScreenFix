@@ -33,7 +33,12 @@ namespace LoLWideScreenFix
         /// <summary>
         /// Hash for "AnchorSingle" for later comparisons
         /// </summary>
-        private static readonly uint AnchorSingle = Fnv1a.HashLower("AnchorSingle");
+        private static readonly uint AnchorSingleNameHash = Fnv1a.HashLower("AnchorSingle");
+
+        /// <summary>
+        /// Hash for "mKeepMaxScale" for later comparisons
+        /// </summary>
+        private static readonly uint mKeepMaxScaleNameHash = Fnv1a.HashLower("mKeepMaxScale");
 
         /// <summary>
         /// Hash for "mRectSourceResolutionWidth" for later comparisons
@@ -86,12 +91,13 @@ namespace LoLWideScreenFix
                 var mAnchors = obj?.GetPropertyByTyp<BinTreeStructure>(mAnchorsNameHash);
                 var mRect = obj?.GetPropertyByTyp<BinTreeVector4>(mRectNameHash);
                 var mRectSourceResolutionWidth = obj?.GetPropertyByTyp<BinTreeUInt16>(mRectSourceResolutionWidthNameHash);
+                var mKeepMaxScale = obj?.GetPropertyByTyp<BinTreeBool>(mKeepMaxScaleNameHash);
 
                 // Was no anchor found? => Create default anchor
-                if (mAnchors == null)
+                if (mAnchors == null && mKeepMaxScale?.Value != true)
                 {
                     // Create base anchor for top left
-                    var newAnchors = new BinTreeStructure(obj, mAnchorsNameHash, AnchorSingle, new List<BinTreeProperty>());
+                    var newAnchors = new BinTreeStructure(obj, mAnchorsNameHash, AnchorSingleNameHash, new List<BinTreeProperty>());
                     newAnchors.AddProperty(new BinTreeVector2(newAnchors, AnchorNameHash, new Vector2(0, 0)));
                     obj.AddProperty(newAnchors);
 
