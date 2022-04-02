@@ -6,6 +6,7 @@ using LeagueToolkit.IO.PropertyBin;
 using LeagueToolkit.IO.PropertyBin.Properties;
 using LeagueToolkit.Helpers.Hashing;
 using System.Collections.Generic;
+using LeagueToolkit.Helpers;
 
 namespace LoLWideScreenFix
 {
@@ -80,6 +81,10 @@ namespace LoLWideScreenFix
 
             // Define change counter
             changes = 0;
+
+            // Unless stream is a PropertyBin => leave
+            if (Utilities.GetExtensionType(entryStream) != LeagueFileType.PropertyBin)
+                return null;
 
             // Read bin file
             var tree = new BinTree(entryStream);

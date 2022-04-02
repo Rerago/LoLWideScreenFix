@@ -218,8 +218,8 @@ namespace LoLWideScreenFix
                     var binTree = LoLWideScreenFix.GetModdedBinTree(entryDecompressedStream, targetResolutionWidth, out int changes);
 
                     // Write file
-                    if (changes > 0)
-                        binTree.Write(localBinPath, FileVersionProvider.GetSupportedVersions(LeagueFileType.PropertyBin)?.Last());
+                    if (binTree != null && changes > 0)
+                        binTree?.Write(localBinPath, FileVersionProvider.GetSupportedVersions(LeagueFileType.PropertyBin)?.Last());
                 }
             }
         }
@@ -300,7 +300,7 @@ namespace LoLWideScreenFix
                     var binTree = LoLWideScreenFix.GetModdedBinTree(entryDecompressedStream, targetResolutionWidth, out int changes);
 
                     // No change? => Skip entry
-                    if (changes == 0)
+                    if (binTree == null || changes == 0)
                         continue;
 
                     // Increase total change counter
@@ -310,7 +310,7 @@ namespace LoLWideScreenFix
                     var moddedBinTree = new MemoryStream();
 
                     // Write file
-                    binTree.Write(moddedBinTree, FileVersionProvider.GetSupportedVersions(LeagueFileType.PropertyBin)?.Last(), true);
+                    binTree?.Write(moddedBinTree, FileVersionProvider.GetSupportedVersions(LeagueFileType.PropertyBin)?.Last(), true);
 
                     // Reset stream position
                     moddedBinTree.Seek(0, SeekOrigin.Begin);
