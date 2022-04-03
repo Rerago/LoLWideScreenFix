@@ -60,7 +60,7 @@ namespace LoLWideScreenFix
             if (System.Diagnostics.Debugger.IsAttached)
             {
                 //args = new string[] {
-                //    @"-l D:\Riot Games\League of Legends\",
+                //    @"-l E:\Riot Games\League of Legends\",
                 //    Environment.ExpandEnvironmentVariables(@"-o %UserProfile%\Desktop\LoLModding\WideScreenFix\"),
                 //    "-t 1920",
                 //    $"-m {OutputMode.RAW_MOD_FOLDER}"

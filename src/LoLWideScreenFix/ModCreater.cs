@@ -49,117 +49,9 @@ namespace LoLWideScreenFix
         private static readonly string[] WadFolders = new string[] { "Game", "DATA", "FINAL" };
 
         /// <summary>
-        /// List of files that need to be processed for the fix
-        /// </summary>
-        private static readonly List<string> FilesToFixPathes = new List<string>()
-        {
-            // RenderUI-Stuff
-            @"ux/renderui/default/basedata.bin",
-            @"ux/renderui/default_basedata_scenes.bin",
-            @"ux/renderui/default_renderui.bin",
-            @"ux/renderui/scenes/default/basedata.bin",
-            @"ux/renderui/scenes/default/sb_hexakill_ltor_nonames.bin",
-            @"ux/renderui/scenes/default/sb_hexakill_mirroredcenter_names.bin",
-            @"ux/renderui/scenes/default/sb_hexakill_mirroredcenter_nonames.bin",
-            @"ux/renderui/scenes/shared/basedata.bin",
-            @"ux/renderui/scenes/shared/mobileshared.bin",
-            @"ux/renderui/scenes/spectatorupdate/basedata.bin",
-            @"ux/renderui/scenes/tft/basedata.bin",
-            @"ux/renderui/scenes/tft/mobile.bin",
-            @"ux/renderui/shared/basedata.bin",
-            @"ux/renderui/shared_renderui.bin",
-            @"ux/renderui/spectatorupdate/basedata.bin",
-            @"ux/renderui/spectatorupdate_basedata_scenes.bin",
-            @"ux/renderui/spectatorupdate_renderui.bin",
-            @"ux/renderui/supplementarybins/shared/loadingscreen.bin",
-            @"ux/renderui/supplementarybins/shared/loadingscreen_clash.bin",
-            @"ux/renderui/tft/basedata.bin",
-            @"ux/renderui/tft_renderui.bin",
-
-            // UI-Base
-            @"common/candidatelist.uibase.bin",
-            @"common/keywords.uibase.bin",
-            @"common/messageboxdialog.uibase.bin",
-            @"common/options.uibase.bin",
-            @"common/richbackground.uibase.bin",
-            @"common/tooltips.uibase.bin",
-            @"gameplay.questtrackers.uibase.bin",
-            @"gameplay/chat.uibase.bin",
-            @"gameplay/deathrecap.uibase.bin",
-            @"gameplay/endofgame.uibase.bin",
-            @"gameplay/enemyrespawntimers.uibase.bin",
-            @"gameplay/esportsbroadcasthud.uibase.bin",
-            @"gameplay/floatinginfobars.uibase.bin",
-            @"gameplay/itemshop.uibase.bin",
-            @"gameplay/killcallouts.uibase.bin",
-            @"gameplay/lolemotes.uibase.bin",
-            @"gameplay/lolfloatinginfobars.uibase.bin",
-            @"gameplay/lolgameheader.uibase.bin",
-            @"gameplay/lolminimap.uibase.bin",
-            @"gameplay/lolobjectivebanner.uibase.bin",
-            @"gameplay/lolprogressbars.uibase.bin",
-            @"gameplay/missfortuneskin31viewcontroller.uibase.bin",
-            @"gameplay/pausedialog.uibase.bin",
-            @"gameplay/playerframe.uibase.bin",
-            @"gameplay/playerinventory.uibase.bin",
-            @"gameplay/playerperks.uibase.bin",
-            @"gameplay/playerstats.uibase.bin",
-            @"gameplay/playerstatstones.uibase.bin",
-            @"gameplay/practicetool.uibase.bin",
-            @"gameplay/questtrackers.uibase.bin",
-            @"gameplay/reconnectdialog.uibase.bin",
-            @"gameplay/replaycameracontrols.uibase.bin",
-            @"gameplay/replaycontrols.uibase.bin",
-            @"gameplay/replayvisibilitymenu.uibase.bin",
-            @"gameplay/scoreboard.uibase.bin",
-            @"gameplay/spectatorkillcallouts.uibase.bin",
-            @"gameplay/spectatorscoreboard.uibase.bin",
-            @"gameplay/spellpickchoice.uibase.bin",
-            @"gameplay/statstonemilestonecallout.uibase.bin",
-            @"gameplay/surrender.uibase.bin",
-            @"gameplay/targetframe.uibase.bin",
-            @"gameplay/targetframereplay.uibase.bin",
-            @"gameplay/teamfightreplay.uibase.bin",
-            @"gameplay/teamframes.uibase.bin",
-            @"gameplay/teamframesreplay.uibase.bin",
-            @"gameplay/tftarmory.uibase.bin",
-            @"gameplay/tftarmory_assists.uibase.bin",
-            @"gameplay/tftarmory_augments.uibase.bin",
-            @"gameplay/tftcombatrecap.uibase.bin",
-            @"gameplay/tftfloatinginfobars.uibase.bin",
-            @"gameplay/tftgameheader.uibase.bin",
-            @"gameplay/tftgamestart.uibase.bin",
-            @"gameplay/tftitemcodex.uibase.bin",
-            @"gameplay/tftminimap.uibase.bin",
-            @"gameplay/tftobjectivebanner.uibase.bin",
-            @"gameplay/tftscoreboard.uibase.bin",
-            @"gameplay/tftstage.uibase.bin",
-            @"gameplay/tftsurrender.uibase.bin",
-            @"gameplay/tfttraitinfocard.uibase.bin",
-            @"gameplay/tfttraittracker.uibase.bin",
-            @"gameplay/tftunitinfo.uibase.bin",
-            @"gameplay/tftunitshop.uibase.bin",
-            @"gameplay/tiptracker.uibase.bin",
-            @"gameplay/voicechat.uibase.bin",
-            @"loadingscreen/loadingscreenclassic.uibase.bin",
-            @"loadingscreen/loadingscreentutorial.uibase.bin",
-            @"loadingscreen/playercardsclassic.uibase.bin"
-        };
-
-        /// <summary>
-        /// A dictionary of the hash of the files that will be modified and the path within the WAD file.
-        /// </summary>
-        private static readonly Dictionary<ulong, string> FilesToFix = FilesToFixPathes.ToDictionary(x => GetXXHash64Hash(x), y => y);
-
-        /// <summary>
         /// The search string used to search for the wad files.
         /// </summary>
-        private const string WadSearchPattern = "*.wad.client";
-
-        /// <summary>
-        /// <see cref="char"/> which is used in the wad in the folder to separate.
-        /// </summary>
-        private const char WadDirectorySeparatorChar = '/';
+        private const string WadSearchPattern = "UI*.wad.client";
         #endregion
 
         #region RAW-Folder
@@ -188,38 +80,30 @@ namespace LoLWideScreenFix
                 // WAD Mounting
                 using var wadMound = Wad.Mount(wadFilePath, true);
 
-                // Determine all files in the WAD that are to be processed
-                var wadEntsToFix = wadMound?.Entries?.Where(x => FilesToFix.ContainsKey(x.Key)).Select(x => x.Value);
-
-                // Is there no data available? => Skip entry
-                if (wadEntsToFix?.Count() <= 0)
-                    continue;
-
                 // Determine the path of the WAD in the League folder
                 var pathToWad = wadFilePath[leagueWadPath.Length..].TrimStart(Path.DirectorySeparatorChar);
 
                 // Run through all entries
-                foreach (var wadEnt in wadEntsToFix)
+                foreach (var wadEnt in wadMound?.Entries.Select(x => x.Value))
                 {
-                    // Determine complete path within the WAD
-                    if (!FilesToFix.TryGetValue(wadEnt.XXHash, out string binFilePath))
-                        continue;
-
-                    // Local file name
-                    var localBinPath = Path.Combine(modOutputPath, pathToWad, binFilePath.Replace(WadDirectorySeparatorChar, Path.DirectorySeparatorChar));
-
-                    // Make sure that the path structure is present
-                    EnsureDirectoryExists(localBinPath, true);
-
                     // Determine steam of the file from the WAD
                     using var entryDecompressedStream = wadEnt.GetDataHandle().GetDecompressedStream();
+
+                    // Local file name
+                    var localBinPath = Path.Combine(modOutputPath, pathToWad, $"{wadEnt.XXHash}.{Utilities.GetExtension(Utilities.GetExtensionType(entryDecompressedStream))}");
 
                     // Modify stream
                     var binTree = LoLWideScreenFix.GetModdedBinTree(entryDecompressedStream, targetResolutionWidth, out int changes);
 
-                    // Write file
+                    // Check if changes have been made
                     if (binTree != null && changes > 0)
+                    {
+                        // Make sure that the path structure is present
+                        EnsureDirectoryExists(localBinPath, true);
+
+                        // Write file
                         binTree?.Write(localBinPath, FileVersionProvider.GetSupportedVersions(LeagueFileType.PropertyBin)?.Last());
+                    }
                 }
             }
         }
@@ -270,16 +154,6 @@ namespace LoLWideScreenFix
                 // WAD Mounting
                 using var wadMound = Wad.Mount(wadFilePath, true);
 
-                // Determine all files in the WAD that are to be processed
-                var wadEntsToFix = wadMound?.Entries?.Where(x => FilesToFix.ContainsKey(x.Key)).Select(x => x.Value);
-
-                // Is there no data available? => Skip entry
-                if (wadEntsToFix?.Count() <= 0)
-                    continue;
-
-                // Create path to WAD
-                var modWadFilePath = Path.Combine(modWadFolder, wadFilePath[leagueWadPath.Length..].TrimStart(Path.DirectorySeparatorChar));
-
                 // Define total change counter
                 var totalChanges = 0;
 
@@ -287,12 +161,8 @@ namespace LoLWideScreenFix
                 using var wadBuilder = new WadBuilder();
 
                 // Run through all entries
-                foreach (var wadEnt in wadEntsToFix)
+                foreach (var wadEnt in wadMound?.Entries.Select(x => x.Value))
                 {
-                    // Determine complete path within the WAD
-                    if (!FilesToFix.TryGetValue(wadEnt.XXHash, out string binFilePath))
-                        continue;
-
                     // Determine steam of the file from the WAD
                     using var entryDecompressedStream = wadEnt.GetDataHandle().GetDecompressedStream();
 
@@ -316,16 +186,22 @@ namespace LoLWideScreenFix
                     moddedBinTree.Seek(0, SeekOrigin.Begin);
 
                     // Wad-Entry-Builder
-                    var entryBuilder = new WadEntryBuilder(WadEntryChecksumType.XXHash3);
-                    entryBuilder.WithPathXXHash(wadEnt.XXHash).WithGenericDataStream(binFilePath, moddedBinTree);
+                    var entryBuilder = new WadEntryBuilder(wadEnt.ChecksumType);
+                    entryBuilder.WithPathXXHash(wadEnt.XXHash).WithGenericDataStream($".{Utilities.GetExtension(LeagueFileType.PropertyBin)}", moddedBinTree);
 
                     // Add entry to WAD
                     wadBuilder.WithEntry(entryBuilder);
                 }
 
-                // Create wad file
+                // Check if changes have been made
                 if (totalChanges > 0)
+                {
+                    // Create path to WAD
+                    var modWadFilePath = Path.Combine(modWadFolder, wadFilePath[leagueWadPath.Length..].TrimStart(Path.DirectorySeparatorChar));
+
+                    // Create wad file
                     wadBuilder.Build(modWadFilePath);
+                }
             }
         }
         #endregion
