@@ -16,7 +16,7 @@ namespace LoLWideScreenFix.Extensions
         /// <param name="obj">The <see cref="BinTreeObject"/> from which the property is to be determined.</param>
         /// <param name="hashName">Hash of the name of the property</param>
         /// <returns>The property of type <see cref="T"/>.</returns>
-        internal static T GetPropertyByTyp<T>(this BinTreeStructure obj, uint hashName) where T : BinTreeProperty
+        internal static T GetPropertyByType<T>(this BinTreeStructure obj, uint hashName) where T : BinTreeProperty
             => obj.Properties?.Where(x => x.NameHash == hashName)?.OfType<T>()?.FirstOrDefault();
     }
 }

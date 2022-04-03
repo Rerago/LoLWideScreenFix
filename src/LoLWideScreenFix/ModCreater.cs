@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text.Json;
@@ -302,15 +301,27 @@ namespace LoLWideScreenFix
     /// </summary>
     public class ModInfo
     {
+        /// <summary>
+        /// Author of the mod.
+        /// </summary>
         [JsonPropertyName("Author")]
         public string Author { get; set; }
 
+        /// <summary>
+        /// A description of what the mod does.
+        /// </summary>
         [JsonPropertyName("Description")]
         public string Description { get; set; }
 
+        /// <summary>
+        /// The name of the mod.
+        /// </summary>
         [JsonPropertyName("Name")]
         public string Name { get; set; }
 
+        /// <summary>
+        /// The version of the mod.
+        /// </summary>
         [JsonPropertyName("Version")]
         public string Version { get; set; }
     }

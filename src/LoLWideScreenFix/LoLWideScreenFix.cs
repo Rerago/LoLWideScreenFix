@@ -93,10 +93,10 @@ namespace LoLWideScreenFix
             foreach (var obj in tree.Objects)
             {
                 // Determine properties
-                var mAnchors = obj?.GetPropertyByTyp<BinTreeStructure>(mAnchorsNameHash);
-                var mRect = obj?.GetPropertyByTyp<BinTreeVector4>(mRectNameHash);
-                var mRectSourceResolutionWidth = obj?.GetPropertyByTyp<BinTreeUInt16>(mRectSourceResolutionWidthNameHash);
-                var mKeepMaxScale = obj?.GetPropertyByTyp<BinTreeBool>(mKeepMaxScaleNameHash);
+                var mAnchors = obj?.GetPropertyByType<BinTreeStructure>(mAnchorsNameHash);
+                var mRect = obj?.GetPropertyByType<BinTreeVector4>(mRectNameHash);
+                var mRectSourceResolutionWidth = obj?.GetPropertyByType<BinTreeUInt16>(mRectSourceResolutionWidthNameHash);
+                var mKeepMaxScale = obj?.GetPropertyByType<BinTreeBool>(mKeepMaxScaleNameHash);
 
                 // Was no anchor found? => Create default anchor
                 if (mAnchors == null && mKeepMaxScale?.Value != true)
@@ -107,7 +107,7 @@ namespace LoLWideScreenFix
                     obj.AddProperty(newAnchors);
 
                     // Read anchor again
-                    mAnchors = obj?.GetPropertyByTyp<BinTreeStructure>(mAnchorsNameHash);
+                    mAnchors = obj?.GetPropertyByType<BinTreeStructure>(mAnchorsNameHash);
                 }
 
                 // Are not all properties present? => Skip object
@@ -115,7 +115,7 @@ namespace LoLWideScreenFix
                     continue;
 
                 // Determine anchor
-                var oldAnchor = mAnchors?.GetPropertyByTyp<BinTreeVector2>(AnchorNameHash);
+                var oldAnchor = mAnchors?.GetPropertyByType<BinTreeVector2>(AnchorNameHash);
 
                 // Could not determine the anchor or is not supported? => Skip object
                 if (oldAnchor == null || !IsAncorSupported(oldAnchor))
