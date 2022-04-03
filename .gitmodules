@@ -1,0 +1,3 @@
+[submodule "src/LeagueToolkit"]
+	path = src/LeagueToolkit
+	url = https://github.com/LoL-Fantome/LeagueToolkit/
