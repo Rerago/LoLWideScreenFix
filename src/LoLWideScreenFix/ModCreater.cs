@@ -102,7 +102,7 @@ namespace LoLWideScreenFix
                         EnsureDirectoryExists(localBinPath, true);
 
                         // Write file
-                        binTree?.Write(localBinPath, FileVersionProvider.GetSupportedVersions(LeagueFileType.PropertyBin)?.Last());
+                        binTree?.Write(localBinPath);
                     }
                 }
             }
@@ -180,14 +180,14 @@ namespace LoLWideScreenFix
                     var moddedBinTree = new MemoryStream();
 
                     // Write file
-                    binTree?.Write(moddedBinTree, FileVersionProvider.GetSupportedVersions(LeagueFileType.PropertyBin)?.Last(), true);
+                    binTree?.Write(moddedBinTree, true);
 
                     // Reset stream position
                     moddedBinTree.Seek(0, SeekOrigin.Begin);
 
                     // Wad-Entry-Builder
                     var entryBuilder = new WadEntryBuilder(wadEnt.ChecksumType);
-                    entryBuilder.WithPathXXHash(wadEnt.XXHash).WithGenericDataStream($".{Utilities.GetExtension(LeagueFileType.PropertyBin)}", moddedBinTree);
+                    entryBuilder.WithPathXXHash(wadEnt.XXHash).WithGenericDataStream(wadEnt.Type, moddedBinTree);
 
                     // Add entry to WAD
                     wadBuilder.WithEntry(entryBuilder);
