@@ -98,6 +98,10 @@ namespace LoLWideScreenFix
                 var mRectSourceResolutionWidth = obj?.GetPropertyByType<BinTreeUInt16>(mRectSourceResolutionWidthNameHash);
                 var mKeepMaxScale = obj?.GetPropertyByType<BinTreeBool>(mKeepMaxScaleNameHash);
 
+                // Are not all properties present? => Skip object
+                if (mRectSourceResolutionWidth == null || mRect == null)
+                    continue;
+
                 // Was no anchor found? => Create default anchor
                 if (mAnchors == null && mKeepMaxScale?.Value != true)
                 {
@@ -110,8 +114,8 @@ namespace LoLWideScreenFix
                     mAnchors = obj?.GetPropertyByType<BinTreeStructure>(mAnchorsNameHash);
                 }
 
-                // Are not all properties present? => Skip object
-                if (mRectSourceResolutionWidth == null || mRect == null || mAnchors == null)
+                // Is there no anchor? => Skip object
+                if (mAnchors == null)
                     continue;
 
                 // Determine anchor
